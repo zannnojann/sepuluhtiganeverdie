@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelas X.3 — SMA NEGERI 6 KRW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================
+       CSS VARIABLES & RESET
+    ============================ */
+    :root {
+      --navy:    #0f2a4a;
+      --blue:    #1a5fa8;
+      --sky:     #4b9fd6;
+      --mint:    #d4eefd;
+      --white:   #ffffff;
+      --off-white: #f5f8fb;
+      --gray:    #8096b0;
+      --light:   #e8f1f8;
+      --gold:    #f0c44f;
+      --shadow:  0 4px 24px rgba(15,42,74,0.10);
+      --shadow-hover: 0 8px 36px rgba(15,42,74,0.18);
+      --radius:  14px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--off-white);
+      color: var(--navy);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    /* ============================
+       NAVBAR
+    ============================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--light);
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      box-shadow: 0 2px 12px rgba(15,42,74,0.07);
+    }
+
+    /* Logo di navbar */
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--blue); }
+
+    /* Link navigasi */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+    }
+
+    /* ============================
+       HERO / HEADER
+    ============================ */
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%);
+      color: var(--white);
+      padding: 80px 5vw 90px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Dekorasi lingkaran latar */
+    header::before {
+      content: '';
+      position: absolute;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      top: -180px; right: -100px;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      bottom: -120px; left: -60px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      font-weight: 300;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-item strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .stat-item span {
+      font-size: 0.8rem;
+      opacity: 0.75;
+      letter-spacing: 0.5px;
+    }
+
+    /* ============================
+       SECTION WRAPPER UMUM
+    ============================ */
+    section {
+      padding: 72px 5vw;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      color: var(--gray);
+      font-size: 0.95rem;
+      max-width: 480px;
+      margin-bottom: 44px;
+    }
+
+    /* ============================
+       PROFIL KELAS
+    ============================ */
+    #profil {
+      background: var(--white);
+    }
+
+    .profil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Card info profil */
+    .profil-card {
+      background: var(--off-white);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      border: 1px solid var(--light);
+    }
+
+    .profil-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+      color: var(--navy);
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--light);
+      font-size: 0.9rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row .label { color: var(--gray); }
+    .info-row .value { font-weight: 600; color: var(--navy); }
+
+    /* Motto kelas */
+    .motto-box {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .motto-box blockquote {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1.4;
+      font-style: italic;
+    }
+    .motto-box .attribution {
+      font-size: 0.82rem;
+      opacity: 0.65;
+      font-weight: 500;
+    }
+
+    /* ============================
+       DAFTAR ANGGOTA KELAS
+    ============================ */
+    #anggota { background: var(--off-white); }
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    /* Card anggota */
+    .member-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 16px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--light);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: default;
+    }
+    .member-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Avatar inisial */
+    .avatar {
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: var(--mint);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0 auto 12px;
+      border: 2px solid var(--light);
+      transition: background 0.25s, color 0.25s;
+    }
+    .member-card:hover .avatar {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .member-card .name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .member-card .role {
+      font-size: 0.74rem;
+      color: var(--gray);
+    }
+
+    /* Badge pengurus */
+    .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-top: 8px;
+    }
+    .badge-ketua   { background: #fff3cd; color: #856404; }
+    .badge-wakil   { background: #d1e7dd; color: #0a5931; }
+    .badge-sekret  { background: #cfe2ff; color: #0a3878; }
+    .badge-bendah  { background: #f8d7da; color: #7d1622; }
+
+    /* ============================
+       JADWAL PELAJARAN
+    ============================ */
+    #jadwal { background: var(--white); }
+
+    .jadwal-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    /* Tombol tab hari (pure CSS menggunakan checkbox+label) */
+    .tab-input { display: none; }
+    .tab-label {
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--light);
+      color: var(--gray);
+      border: 1px solid transparent;
+      transition: background 0.2s, color 0.2s;
+      user-select: none;
+    }
+    .tab-input:checked + .tab-label {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    /* Tabel jadwal */
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .schedule-table th {
+      background: var(--navy);
+      color: var(--white);
+      text-align: left;
+      padding: 13px 18px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .schedule-table th:first-child { border-radius: 10px 0 0 0; }
+    .schedule-table th:last-child  { border-radius: 0 10px 0 0; }
+    .schedule-table td {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--light);
+      color: var(--navy);
+    }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table tr:hover td { background: var(--mint); }
+    .schedule-table .mapel { font-weight: 600; }
+    .schedule-table .guru   { color: var(--gray); font-size: 0.82rem; }
+
+    .pill {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 999px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      background: var(--mint);
+      color: var(--blue);
+    }
+
+    /* ============================
+       GALERI FOTO
+    ============================ */
+    #galeri { background: var(--off-white); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 16px;
+    }
+
+    /* Placeholder foto dengan warna gradient berbeda */
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.28s, box-shadow 0.28s;
+      box-shadow: var(--shadow);
+    }
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Item pertama lebih besar (span 2 kolom) */
+    .gallery-item:first-child { grid-column: span 2; aspect-ratio: 16/9;
+     }
+
+    .gallery-item .g1 { background: linear-gradient(135deg, #0f2a4a, #1a5fa8); }
+    .gi-1  { background: linear-gradient(135deg, #0f2a4a 0%, #1a5fa8 100%); }
+    .gi-2  { background: linear-gradient(135deg, #1a5fa8 0%, #4b9fd6 100%); }
+    .gi-3  { background: linear-gradient(135deg, #4b9fd6 0%, #d4eefd 100%); }
+    .gi-4  { background: linear-gradient(135deg, #006d60 0%, #00a896 100%); }
+    .gi-5  { background: linear-gradient(135deg, #7b2d8b 0%, #b45bc9 100%); }
+    .gi-6  { background: linear-gradient(135deg, #c94040 0%, #f06060 100%); }
+
+    /* Semua galeri pakai pseudo-element sebagai background */
+    .gallery-item { position: sticky; }
+    .gallery-item .gi-bg {
+      position: absolute; inset: 0;
+      z-index: 0;
+    }
+    .gallery-item .gi-label {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* ============================
+       PENGUMUMAN
+    ============================ */
+    #pengumuman { background: var(--white); }
+
+    .announcement-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .announcement-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--off-white);
+      border: 1px solid var(--light);
+      border-left: 4px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .announcement-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateX(4px);
+    }
+    .announcement-card.urgent { border-left-color: #e53e3e; }
+    .announcement-card.success { border-left-color: #38a169; }
+
+    .ann-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--mint);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .announcement-card.urgent  .ann-icon { background: #fff5f5; }
+    .announcement-card.success .ann-icon { background: #f0fff4; }
+
+    .ann-content .ann-title {
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .ann-content .ann-desc {
+      font-size: 0.86rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .ann-date {
+      margin-left: auto;
+      font-size: 0.76rem;
+      color: var(--gray);
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.75);
+      padding: 48px 5vw 28px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .footer-brand p { font-size: 0.86rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li {
+      padding: 5px 0;
+      font-size: 0.86rem;
+    }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ============================
+       DIVIDER
+    ============================ */
+    .divider {
+      width: 48px; height: 4px;
+      border-radius: 2px;
+      background: var(--blue);
+      margin-bottom: 32px;
+    }
+
+    /* ============================
+       RESPONSIVE — MOBILE
+    ============================ */
+    @media (max-width: 768px) {
+      nav { padding: 0 4vw; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.8rem; }
+
+      section { padding: 52px 4vw; }
+
+      .profil-grid { grid-template-columns: 1fr; }
+
+      .member-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gallery-item:first-child { grid-column: span 2; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+
+      .hero-stats { gap: 28px; }
+
+      .announcement-card { flex-wrap: wrap; }
+      .ann-date { width: 100%; margin-left: 0; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 3.2rem; }
+      .nav-links { display: none; } /* Sembunyikan nav di layar sangat kecil */
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:first-child { grid-column: span 1; }
+    }
+     /* ============================
+       Background musik (opsional, bisa diaktifkan jika ingin suasana lebih hidup)
+    ============================ */
+    
+  </style>
+</head>
+<body>
+
+  <!-- ========================
+       NAVIGASI
+  ======================== -->
+  <nav>
+    <div class="nav-logo">X<span>.3</span></div>
+    <ul class="nav-links">
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#anggota">Anggota</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+     
+    </ul>
+  </nav>
+
+  <!-- ========================
+       HERO / HEADER UTAMA
+  ======================== -->
+  <header>
+    <div class="hero-badge">SMA NEGERI 6 KRW · Tahun Ajaran 2025/2026</div>
+    <h1>Kelas X.3</h1>
+    <p>Bersama kita tumbuh, belajar, dan meraih prestasi terbaik.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <strong>42</strong>
+        <span>Siswa</span>
+      </div>
+      <div class="stat-item">
+        <strong>17</strong>
+        <span>Mata Pelajaran</span>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================
+       PROFIL KELAS
+  ======================== -->
+  <section id="profil">
+    <div class="section-label">Tentang Kami</div>
+    <h2 class="section-title">Profil Kelas</h2>
+    <div class="divider"></div>
+    <div class="profil-grid">
+      <!-- Info detail kelas -->
+      <div class="profil-card">
+        <h3>Informasi Kelas</h3>
+        <div class="info-row">
+          <span class="label">Nama Kelas</span>
+          <span class="value">X.3</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Wali Kelas</span>
+          <span class="value">Meida Sugiharti M.Pd.</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Ruang Kelas</span>
+          <span class="value">Lantai 1</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Jumlah Siswa</span>
+          <span class="value">42 Siswa P (27) L (15)</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Tahun Ajaran</span>
+          <span class="value">2025 / 2026</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Ketua Kelas</span>
+          <span class="value">Keyko Marwah Sabrina</span>
+        </div>
+      </div>
+
+      <!-- Motto & visi kelas -->
+      <div class="motto-box">
+        <div>
+          <div class="section-label" style="color: rgba(255,255,255,0.55);">Motto Kelas</div>
+          <blockquote>"Bukan seberapa cepat, tapi seberapa jauh kita melangkah bersama."</blockquote>
+        </div>
+        <div>
+          <div class="section-label" style="color: rgba(255,255,255,0.55); margin-bottom:8px;">Visi</div>
+          <p style="font-size:0.9rem; opacity:0.85;">Menjadi kelas yang berprestasi, berkarakter, dan berkontribusi nyata bagi sekolah maupun masyarakat.</p>
+          <div class="attribution" style="margin-top:20px;">— Kelas X.3 · SMA NEGERI 6 KRW</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       DAFTAR ANGGOTA KELAS
+  ======================== -->
+  <section id="anggota">
+    <div class="section-label">Keluarga Besar</div>
+    <h2 class="section-title">Anggota Kelas</h2>
+    <p class="section-sub">Kami adalah 42 jiwa yang belajar, bertumbuh, dan berkarya bersama di Kelas X.3.</p>
+    <div class="member-grid">
+
+      <!-- Pengurus Kelas -->
+      <div class="member-card">
+        <div class="avatar">KS</div>
+        <div class="name">Keyko Marwah Sabrina</div>
+        <div class="role">Siswa</div>
+        <span class="badge badge-ketua">Ketua</span>
+      </div>
+      <div class="member-card">
+        <div class="avatar">RB</div>
+        <div class="name">M. Raihan Bagaskara</div>
+        <div class="role">Siswa</div>
+        <span class="badge badge-wakil">Wakil</span>
+      </div>
+      <div class="member-card">
+        <div class="avatar">SH</div>
+        <div class="name">Siti Nur Halimah</div>
+        <div class="role">Siswa</div>
+        <span class="badge badge-sekret">Sekretaris</span>
+      </div>
+       <div class="member-card">
+        <div class="avatar">FA</div>
+        <div class="name">Farah Azkiya Nadila P</div>
+        <div class="role">Siswa</div>
+        <span class="badge badge-sekret">Sekretaris</span>
+      </div>
+      <div class="member-card">
+        <div class="avatar">WR</div>
+        <div class="name">Widhia Ramadhani</div>
+        <div class="role">Siswa</div>
+        <span class="badge badge-bendah">Bendahara</span>
+      </div>
+        <div class="member-card">
+        <div class="avatar">SK</div>
+        <div class="name">Syifa Khairunnisa</div>
+        <div class="role">Siswa</div>
+        <span class="badge badge-bendah">Bendahara</span>
+      </div>
+
+
+      <!-- Anggota biasa -->
+      <div class="member-card">
+        <div class="avatar">AR</div>
+        <div class="name">Ahmad Rizki R</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">AP</div>
+        <div class="name">Adinda Putri A</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">AD</div>
+        <div class="name">Almira Diah M</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">AS</div>
+        <div class="name">Anisa Syahrini</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">AT</div>
+        <div class="name">Ariib Thamir K G</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">AH</div>
+        <div class="name">Aulia Hasanah I</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">CA</div>
+        <div class="name">Celsi Aprilianti</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">DL</div>
+        <div class="name">Dhio Lesmana P</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">DA</div>
+        <div class="name">Dinda Aquiliani S</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">FP</div>
+        <div class="name">Fabian Pambayu</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">FR</div>
+        <div class="name">Fauzan Nur Rizky S</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">GT</div>
+        <div class="name">Gendis Tri Handayani</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">HJ</div>
+        <div class="name">Hapsah Julianti</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">HD</div>
+        <div class="name">Hisyam Dika M</div>
+        <div class="role">Siswa</div>
+      </div>
+      <div class="member-card">
+        <div class="avatar">JA</div>
+        <div class="name">Jisilva Anatasya H</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">IS</div>
+        <div class="name">Irham Syamsurrizqi</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">LR</div>
+        <div class="name">Lini Ramadhani</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">MP</div>
+        <div class="name">Mawar Putri A</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">MU</div>
+        <div class="name">Miftahul Ulum</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">IR</div>
+        <div class="name">M. Ihda Rizky</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">MF</div>
+        <div class="name">M. Fachry</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">NP</div>
+        <div class="name">Nadia Putri</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">NC</div>
+        <div class="name">Natasya Citra K</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">NA</div>
+        <div class="name">Nikita Aulia N</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">NH</div>
+        <div class="name">Novan Herliansyah S</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">PR</div>
+        <div class="name">Putri Reva K</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">RW</div>
+        <div class="name">Raihan Wicaksono</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">RF</div>
+        <div class="name">Raisya Fitria A</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">RP</div>
+        <div class="name">Reifhan Putra R</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">RA</div>
+        <div class="name">Risma Aulia</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">S</div>
+        <div class="name">Sarah</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">SD</div>
+        <div class="name">Silviana Dalimunte</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">TN</div>
+        <div class="name">Tiara Nadhifa</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">VR</div>
+        <div class="name">Valian Raesheva M</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">ZA</div>
+        <div class="name">Zahra Almira P</div>
+        <div class="role">Siswa</div>
+      </div>
+<div class="member-card">
+        <div class="avatar">J</div>
+        <div class="name">Jinan</div>
+        <div class="role">Siswa</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- ========================
+       GALERI FOTO KELAS
+  ======================== -->
+  <section id="galeri">
+    <div class="section-label">Kenangan Bersama</div>
+    <h2 class="section-title">Galeri Foto</h2>
+    <p class="section-sub">Momen-momen berharga yang kita ciptakan bersama selama satu tahun ini.</p>
+    <div class="gallery-grid">
+
+      <!-- Setiap item galeri menggunakan warna gradien sebagai placeholder foto -->
+      <div class="gallery-item">
+        <div class="gi-bg gi-1" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20251126-WA0181.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+        <div class="gi-label">📸 Memory X.3</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gi-bg gi-2" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20251030-WA0329.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+        <div class="gi-label">📸</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gi-bg gi-3" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20260213-WA0074.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+        <div class="gi-label">📸</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gi-bg gi-4" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20250919-WA0019.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+        <div class="gi-label">📸</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gi-bg gi-5" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20260127-WA0146.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+        <div class="gi-label">📸</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gi-bg gi-6" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20251002-WA0029.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+        <div class="gi-label">📸</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gi-bg gi-6" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20260504-WA0053.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+        <div class="gi-label">📸</div>
+      </div>
+        <div class="gallery-item">
+          <div class="gi-bg gi-6" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20260421-WA0068(1).jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+          <div class="gi-label">📸</div>
+        </div>
+          <div class="gallery-item">
+            <div class="gi-bg gi-6" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20260507-WA0059.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+            <div class="gi-label">📸</div>
+            </div>
+        <div class="gallery-item">
+          <div class="gi-bg gi-6" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20260213-WA0034.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+          <div class="gi-label">📸</div>
+        </div>
+          <div class="gallery-item">
+            <div class="gi-bg gi-6" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20250919-WA0020.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+            <div class="gi-label">📸</div>
+          </div>
+           <div class="gallery-item">
+            <div class="gi-bg gi-6" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20260120-WA0056(1).jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+            <div class="gi-label">📸</div>
+        </div>
+           <div class="gallery-item">
+            <div class="gi-bg gi-6" style="position:absolute;inset:0;border-radius:var(--radius);"><img src="image/IMG-20250919-WA0018.jpeg" alt=""  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--radius);" /></div>
+            <div class="gi-label">📸</div>
+        </div>
+           
+  </section>
+
+  <!-- ========================
+       FOOTER
+  ======================== -->
+  <footer>
+    <div class="footer-top">
+
+      <!-- Brand info -->
+      <div class="footer-brand">
+        <div class="logo">Kelas X.3</div>
+        <p>SMA NEGERI 6 KRW · Tahun Ajaran 2025/2026<br>
+           Wali Kelas: Meida Sugiharti M.Pd.<br>
+           "Bersama kita tumbuh dan meraih mimpi."</p>
+      </div>
+
+      <!-- Navigasi cepat -->
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#profil">Profil Kelas</a></li>
+          <li><a href="#anggota">Daftar Anggota</a></li>
+          <li><a href="#galeri">Galeri Foto</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak -->
+      <div class="footer-col">
+        <h4>Kontak</h4>
+        <ul>
+          <li>📍 Jl. Veteran, KW6, Karangpawitan, Kec. Karawang Barat, Karawang, Jawa Barat  41315</li>
+          <li>✉️ instagram : <a href="https://www.instagram.com/xthreeshine_3?igsh=aGU4NnUzOWRxYndi" target="_blank">xthreeshine_3</a></li>
+          <li>🕐 Senin–Jumat, 06.30–15.00</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Kelas X.3 · SMA NEGERI 6 KRW. Dibuat dengan ❤️ oleh pengurus kelas.
+    </div>
+  </footer>
+  <div id="musicBtn" onclick="toggleMusic()" title="Putar / Hentikan Musik">
+  <div class="music-icon" id="musicIcon">▶</div>
+  <span id="musicLabel">Putar Musik</span>
+  <div class="music-waves" id="musicWaves">
+    <span></span><span></span><span></span>
+  </div>
+</div>
+
+<style>
+  #musicBtn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    background: linear-gradient(135deg, #0f2a4a, #1a5fa8);
+    color: white;
+    border: none;
+    padding: 12px 20px 12px 16px;
+    border-radius: 999px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(15,42,74,0.35);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    user-select: none;
+  }
+  #musicBtn:hover { transform: translateY(-3px); }
+  #musicBtn:active { transform: scale(0.96); }
+
+  .music-waves {
+    display: none;
+    align-items: flex-end;
+    gap: 3px;
+    height: 18px;
+  }
+  .music-waves span {
+    display: block;
+    width: 3px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 2px;
+    animation: wave 0.8s ease-in-out infinite;
+  }
+  .music-waves span:nth-child(1) { height: 8px;  animation-delay: 0s; }
+  .music-waves span:nth-child(2) { height: 16px; animation-delay: 0.15s; }
+  .music-waves span:nth-child(3) { height: 10px; animation-delay: 0.3s; }
+
+  @keyframes wave {
+    0%, 100% { transform: scaleY(1); }
+    50%       { transform: scaleY(0.35); }
+  }
+  #musicBtn.playing .music-waves { display: flex; }
+</style>
+
+<script>
+  function toggleMusic() {
+    var audio = document.getElementById('bgMusic');
+    var btn   = document.getElementById('musicBtn');
+    var icon  = document.getElementById('musicIcon');
+    var label = document.getElementById('musicLabel');
+    if (audio.paused) {
+      audio.play();
+      icon.textContent  = '⏸';
+      label.textContent = 'Hentikan';
+      btn.classList.add('playing');
+    } else {
+      audio.pause();
+      icon.textContent  = '▶';
+      label.textContent = 'Putar Musik';
+      btn.classList.remove('playing');
+    }
+  }
+</script>
+<audio id="bgMusic" loop>
+  <source src="music/A Sorrowful Reunion_spotdown..mp3" type="audio/mpeg" />
+</audio>
+
+</body>
+</html>
